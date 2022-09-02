@@ -1,0 +1,31 @@
+
+
+Man in the mıddle attack nedir?
+
+    Hedef kullanıcı ve modem arasındaki trafiğe sızıp server veya client giden paketleri kendi üzerinden hedefe göndermeye
+    ortadaki adam saldırısı nedir.
+
+
+
+Man in the middle attack nasıl yapılır?
+
+    İlk olarak terminalde "arp-scan -l" yaparak hedef cihazın ip addresini öğreniyoruz.
+    Daha sonra ise arp spoofing denen arp zehirleme işlemi yapıyoruz. 
+    "arp spoof -i interface target ipaddres" örneğin:(arp spoof -i eth0 192.168.0.10)
+    Daha sonra arp forwording yapıyoruz. "echo 1 /proc/sys/net/ip4/ip_forward" yaparak arp forwording yapmış oluyoruz.
+
+    "arp spoofing -i etho -t 192.168.10 -r 192.168.0.15" geri zehirleme yaparak diğer haberleşme tarafınıda zehirlemiş oluyoruz.
+
+    Bu tüm işlemleri yaptıktan sonra Man in the middle attack gerçekleşiyor.Daha sonra ise wireshark vb gibi araçları kullanarak 
+    aradaki gelen giden paketleri istekleri izleyip ona göre aksiyon alabiliriz
+
+HTTP packet Sniffing Nedir? Nasıl yapılır? 
+    Hedef cihazın sadece http packetlerine bakmak ve girdiği sitelerdeki hassas bilgilerini sömürmek için Sniffing işlemi yapılır.
+    Nasıl yapılır: wireshark vb araçlarda filtreleme yaparak sniffing yaparız. örneğin:"ip.src==10.0.2.7 and ip.dst==10.10.10.11 and http" gibi bir filtreleme yapabiliriz.
+
+DNS spoofing nedir? Nasıl yapılır?
+    DNS spoofing hedef kullanıcının gideceği siteleri kendi istediğimiz bir siteye yönlendirme yapmaya DNS spoofing(DNS zehirleme) nedir.
+    Nasıl yapılır: Kullamdığımız aracın örneğin ettercap kullanıyoruz.Terminale giderek "nano /etc/ettercap/etter.dns" konumuna giderek dosya içeriğini yönlendirme yapabiliriz.
+
+
+
